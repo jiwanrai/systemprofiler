@@ -1,0 +1,156 @@
+<p id="notice"><%= notice %></p>
+<div>
+  <h1><%= @host.hostname %></h1>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Host Details</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-condensed">
+        <tr>
+          <th>Item</th>
+          <th>Detail</th>
+        </tr>
+        <tr>
+          <td>Hostname</td>
+          <td><%= @host.hostname.split(".").first %></td>
+        </tr>
+        <tr>
+          <td>Host Description</td>
+          <td><%= @host.description || "Empty" %></td>
+        </tr>
+        <tr>
+          <td>Operating System</td>
+          <td><%= @host.os %></td>
+        </tr>
+        <tr>
+          <td>Linux Version</td>
+          <td><%= @host.linux_version %></td>
+        </tr>
+        <tr>
+          <td>Domain</td>
+          <td><%= @host.domain.name %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">CPU Details</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-condensed">
+        <tr>
+          <th>Item</th>
+          <% @host.cpus.each do |cpu| %>
+          <th>CPU <%= cpu.processor %></th>
+          <% end %>
+        </tr>
+        <tr>
+          <td>CPU Model</td>
+          <% @host.cpus.each do |cpu| %>
+          <td><%= cpu.cpu %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>CPU Speed</td>
+          <% @host.cpus.each do |cpu| %>
+          <td><%= cpu.speed %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>CPU Family</td>
+          <% @host.cpus.each do |cpu| %>
+          <td><%= cpu.cpu_family %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>CPU Stepping</td>
+          <% @host.cpus.each do |cpu| %>
+          <td><%= cpu.stepping %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>CPU Cores</td>
+          <% @host.cpus.each do |cpu| %>
+          <td><%= cpu.cores %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Network Details</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-condensed">
+        <tr>
+          <th>Item</th>
+          <% @host.interfaces.each do |interface| %>
+          <th><%= interface.name %></th>
+          <% end %>
+        </tr>
+        <tr>
+          <td>Interface Name</td>
+          <% @host.interfaces.each do |interface| %>
+          <td><%= interface.name %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>Interface Type</td>
+          <% @host.interfaces.each do |interface| %>
+          <td><%= interface.if_type %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>IP Address</td>
+          <% @host.interfaces.each do |interface| %>
+          <td><%= interface.ip_address %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>MAC Address</td>
+          <% @host.interfaces.each do |interface| %>
+          <td><%= interface.mac_addr %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Disk Details</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-condensed">
+        <tr>
+          <th>Item</th>
+          <% @host.disks.each do |disk| %>
+          <th><%= disk.name %></th>
+          <% end %>
+        </tr>
+        <tr>
+          <td>Disk Name</td>
+          <% @host.disks.each do |disk| %>
+          <td><%= disk.name %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>File System Type</td>
+          <% @host.disks.each do |disk| %>
+          <td><%= disk.fs_type %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>Disk Size</td>
+          <% @host.disks.each do |disk| %>
+          <td><%= disk.disk_size %> GB</td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<%= link_to 'Edit', edit_host_path(@host) %> |
+<%= link_to 'Back', hosts_path %>

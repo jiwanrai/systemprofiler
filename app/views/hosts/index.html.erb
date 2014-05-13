@@ -1,0 +1,24 @@
+<h1>Dalia Servers</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Hostname</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @hosts.each do |host| %>
+      <tr>
+        <td><%= link_to host.hostname, host_path(host) %></td>
+        <td><%= host.description || "Empty" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Host', new_host_path %>

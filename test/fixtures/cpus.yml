@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  model: MyString
+  speed: 
+  cpu: MyString
+  cores: 1
+
+two:
+  model: MyString
+  speed: 
+  cpu: MyString
+  cores: 1

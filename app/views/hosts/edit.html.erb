@@ -1,0 +1,16 @@
+<h1>Edit Host - <%= @host.hostname %></h1>
+
+<p>You can only update the description, everything else is automatically updated!</p>
+
+<div class="form group">
+    <%= form_for(@host) do |f| %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %>
+
+      <%= f.submit "Update Host Description", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+
+<%= link_to 'Show', @host %> |
+<%= link_to 'Back', hosts_path %>
